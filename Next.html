@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+*{
+  border:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+html{
+overflow:hidden;
+}
+    body{
+     background:rgb(0,0,145);
+     height:100vh;
+     width:100vw;
+     padding:40px 30px;
+     overflow:hidden;
+    }
+    div#main{
+     height:100%;
+     width:100%;
+     border-radius:10px;
+     padding:10px;
+     max-width:600px;
+     background:rgb(0,0,100);
+     font-size:16px;
+     white-space:wrap;
+     color:yellow;
+     text-transform:capitalize;
+     border:1px solid white;
+     overflow:scroll;
+     box-shadow:inset 0px 0px 20px 0px black;
+     
+    }
+    .new{
+    animation:.9s 0s new linear infinite;
+    opacity:0;
+    display:inline;
+    }
+    input{
+    height:30px;
+    width:180px;
+    padding:10px;
+    display:block;
+    text-transform:uppercase;
+    }
+    button{
+    color:blue;
+    font-weight:bold;
+    justify-content:center;
+    align-content:center;
+    text-align:center;
+    display:inline;
+    border:2px solid blue;
+    box-shadow:0px 0px 5px 0px black;
+    padding:2px 5px;
+    text-transform:capitalize;
+    border-radius:6px;
+    }
+    #contents {
+    letter-spacing:2px;
+    }
+    @keyframes new{
+    0%{
+    opacity:0;
+    }
+    49.9%{
+    opacity:0;
+    }
+    50%{
+    opacity:1;
+    }
+    80%{
+    opacity:1;
+    }
+    80.1%{
+    opacity:0;
+    }
+    }
+</style>
+</head>
+<body>
+<code>
+  <div id="main" >
+<span id="contents" >
+</span><span class="new" >|</span>
+  </div>
+</code>
+</body>
+</html>
+
+<script type="text/javascript">
+
+function word(n,condition,w){
+
+let i=0;
+let word=n;
+
+let wait=w;
+
+let interval=setInterval(function (){
+
+if(condition){
+
+
+if(i == word.length - 1) {
+
+clearInterval(interval);
+}
+if(word[i]=="@"){
+document.getElementById("contents").innerHTML+="<br>";
+i++;
+}
+if(word[i]=="$"){
+document.getElementById("contents").innerHTML+="<br><br>";
+i++;
+}
+
+document.getElementById("contents").innerHTML+=word[i];
+i++;
+
+}
+else{
+document.getElementById("contents").innerHTML+=word;
+clearInterval(interval);
+}
+},wait);
+
+
+
+}
+let heading="<p><u>Login Here</u></p><br>";
+word(heading,false,1000);
+
+setTimeout(function(){
+let log="Please Enter Your Password!";
+word(log,true,80);
+},2000);
+
+setTimeout(function(){
+
+let input="<p><input id='login' placeholder='input Password' type='text'></p>";
+word(input,false,2000);
+
+},3000)
+
+
+setTimeout(function(){
+let e="<p><button onclick='login()'>Login</button></p>";
+word(e,false,2000);
+},5000);
+
+
+function start(v){
+if(v){
+setTimeout(function(){
+let all="You are Welcome To This page!";
+word(all,true,100);
+},8000);
+
+
+setTimeout(function(){
+let all="$congratulations for opening this page, this show me that you're hardworker.";
+word(all,true,100);
+},14000);
+
+
+
+setTimeout(function(){
+let ll="$I made this for you, this page may be is nothing but it's the way of expressing my emotions and wishes to you.$ @I don't know how met and the reason why we met it was like magic. $but I'm so very happy to have you as my friend.@You are the one who I amazed the way met. I can't call you my friend, becouse you are my best friend to my heart and you're the most important person to me.$I don't know you by face to face but my heart knows you a lot more than I know myself.$I don't know what in your heart but I know that my heart wish to stay with you in any possible way.$You're new friend to me although you're best friend to my heart."
+
+word(ll,true,100);
+},25000);
+
+
+setTimeout(function(){
+let ll="$What ever you will do, I wish you to success; in your exams,and other remaining Life.@Even I can say,but I can't say all becouse you gave me what to think to you.$I miss you my best.@Take care of yourself.$urantangaje kuba wageze hano, gusa sinabona uko nkubwira ntekereza, uri igitangaza.$wibuke ko ibi ari woe wenyine nabikoreye, so ntubihe abandi kuko ejo nzabikuraho.$wiyiteho nkwifurije gutsinda exams ndetse nkwifurije guhirwa muri byose...@I@U$iyi niyo yari ompano iruta izíndi naguteguriy$";
+
+word(ll,true,100);
+},90000);
+
+setTimeout(function(){
+word("<a href='https://youtube.com/shorts/ymWJP1KPbUA?si=h0ZQZpOTvXVZauYU'>Click hano ubone gift yanyuma kuri youtube</a>",false,100);
+},498000);
+}
+
+else{
+let pp="<br>Login failure,try again!...<br><br>";
+word(pp,false,100);
+}
+}
+function login(){
+
+let logg=document.getElementById('login').value;
+startt(logg==localStorage.getItem("hide"));
+}
+</script>
