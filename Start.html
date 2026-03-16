@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+*{
+  border:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+html{
+overflow:hidden;
+}
+    body{
+     background:rgb(0,0,145);
+     height:100vh;
+     width:100vw;
+     padding:40px 30px;
+     overflow:hidden;
+    }
+    div#main{
+     height:100%;
+     width:100%;
+     border-radius:10px;
+     padding:10px;
+     max-width:600px;
+     background:rgb(0,0,100);
+     font-size:16px;
+     white-space:wrap;
+     color:yellow;
+     text-transform:capitalize;
+     border:1px solid white;
+     overflow:scroll;
+     box-shadow:inset 0px 0px 20px 0px black;
+     
+    }
+    .new{
+    animation:.9s 0s new linear infinite;
+    opacity:0;
+    display:inline;
+    }
+    .form{
+    background:silver;
+    height:auto;
+    width:100%;
+    color:black;
+    letter-spacing:0px;
+    font-size:10px;
+    padding:10px;
+    border-radius:10px;
+    }
+    .form input{
+    height:30px;
+    width:60px;
+    padding:10px;
+    display:block;
+    text-transform:uppercase;
+    }
+    .form input[type=button]{
+    color:blue;
+    font-weight:bold;
+    justify-content:center;
+    align-content:center;
+    text-align:center;
+    display:inline;
+    border:2px solid blue;
+    box-shadow:0px 0px 5px 0px black;
+    padding:0;
+    text-transform:capitalize;
+    border-radius:6px;
+    }
+    #contents {
+    letter-spacing:2px;
+    }
+    @keyframes new{
+    0%{
+    opacity:0;
+    }
+    49.9%{
+    opacity:0;
+    }
+    50%{
+    opacity:1;
+    }
+    80%{
+    opacity:1;
+    }
+    80.1%{
+    opacity:0;
+    }
+    }
+</style>
+</head>
+<body>
+<code>
+  <div id="main" >
+<span id="contents" ></span><span class="new" >|</span>
+  </div>
+</code>
+</body>
+</html>
+
+<script type="text/javascript">
+word();
+let i=0;
+function word(){
+
+let word="Hi There,$This content was made for only you.$so, You are going to be requested to create password,$you have to choose right choices for questions below in order to make sure that truly if you are allowed to access this contents.@Thank you! $Enjoy contents that were prepared for you.";
+let wait=5;
+
+let interval=setInterval(function (){
+
+if(i == word.length - 1) {
+f();
+clearInterval(interval);
+}
+if(word[i]=="@"){
+document.getElementById("contents").innerHTML+="<br>";
+i++;
+}
+if(word[i]=="$"){
+document.getElementById("contents").innerHTML+="<br><br>";
+i++;
+}
+
+document.getElementById("contents").innerHTML+=word[i];
+i++;
+
+
+},wait);
+
+
+
+}
+
+function f(){
+
+let content=document.createElement("div");
+content.classList.add("form");
+content.innerHTML='<p>What is your favourite mumber between 0 - 9? <input onkeyup="text(0)" id="text0" placeholder="0 - 9" type="number"></p><p>What letter start your firstname?<input onkeyup="text(1)" id="text1" placeholder="A - Z"></p><p>What letter start your lastname?<input onkeyup="text(2)" id="text2" placeholder="A - Z"></p><p id="error"></p><p><input type="button" value="Verify" onclick="logi()"></p>';
+
+setTimeout(function(){
+document.getElementById("main").appendChild(content);
+},2000);
+}
+
+function text(l){
+let el=document.getElementById("text"+l);
+if(el.value.length > 1) el.value=el.value[0];
+}
+
+function logi(){
+let l1=document.getElementById("text0").value;
+let l2=document.getElementById("text1").value;
+let l3=document.getElementById("text2").value;
+let Error=document.getElementById("error");
+
+let y="4" + l1 + l2 +l3;
+
+if(y=="40AI" ||  y=="40IA"){
+
+Error.innerHTML="Sucessfully password creation! <br> <i><big>Your password is <u>"+y+"</u></big></i><br>Please Remember your password!<br>Loading Next Page...";
+Error.style.color="blue";
+localStorage.setItem("hide",y);
+alert(localStorage.getItem("hide"));
+setTimeout(function(){ 
+let link=document.createElement("a");
+link.setAttribute("href","reb.gov.rw");
+
+if(confirm("Are you ready to see the contents?")) link.click();
+},3000);
+
+}
+else{
+Error.innerHTML="Sorry try again!";
+Error.style.color="red";
+
+}
+}
+</script>
